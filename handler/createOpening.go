@@ -34,3 +34,4 @@ func CreateOpeningHandler(ctx *gin.Context){
 
 	sendSucess(ctx,"create-opening",opening)
 }
+
