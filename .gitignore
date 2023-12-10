@@ -1,0 +1,14 @@
+*.exe
+*.exe
+*.so
+*.dylib
+
+#Test Binary
+
+*.test 
+
+# Converage
+
+*.out
+
+db/
