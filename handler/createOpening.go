@@ -18,12 +18,12 @@ func CreateOpeningHandler(ctx *gin.Context){
 	}
 	
 	opening := schemas.Opening{
-		Role: request.Role,
-		Company: request.Company,
+		Name: request.Name,
+		CPF: request.CPF,
 		Location: request.Location,
-		Remote: *request.Remote,
-		Link: request.Link,
-		Salary: request.Salary,
+		Priority: *request.Priority,
+		Number: request.Number,
+		//Salary: request.Salary,
 	}
 
 	if err := db.Create(&opening).Error; err != nil{
@@ -31,6 +31,7 @@ func CreateOpeningHandler(ctx *gin.Context){
 		sendError(ctx,http.StatusInternalServerError, "error creating opening on database")
 		return
 	}
+
 
 	sendSucess(ctx,"create-opening",opening)
 }

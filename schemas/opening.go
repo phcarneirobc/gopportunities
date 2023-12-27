@@ -8,12 +8,12 @@ import (
 
 type Opening struct{
 	gorm.Model
-	Role string
-	Company string
+	Name string
+	CPF string
 	Location string
-	Remote bool
-	Link string
-	Salary int64
+	Priority bool
+	Number string
+	//Salary int64
 }
 
 type OpeningResponse struct{
@@ -21,11 +21,11 @@ type OpeningResponse struct{
 	CreatedAt time.Time `json:"createdAt"`
 	UpdatedAt time.Time `json:"updatedAt"`
 	DeletedAt time.Time `json:"deletedAt,omitempty"`
-	Role string `json:"role"`
-	Company string `json:"company"`
+	CPF string `json:"cpf"`
+	Name string `json:"name"`
 	Location string `json:"location"`
-	Remote bool `json:"remote"`
-	Link string `json:"link"`
-	Salary int64 `json:"salary"`
+	Priority bool `json:"priority"`
+	Number string `json:"number"`
+	//Salary int64 `json:"salary"`
 }
 	

@@ -28,30 +28,28 @@ func UpdateOpeningHandler(ctx *gin.Context){
 		sendError(ctx,http.StatusNotFound,"opening not found")
 		return
 	}
-
-	if request.Role != "" {
-		opening.Role = request.Role
+	if request.Name != "" {
+		opening.Name = request.Name
 	}
-
-	if request.Company != "" {
-		opening.Company = request.Company
+	if request.CPF != "" {
+		opening.CPF = request.CPF
 	}
-
 	if request.Location != "" {
 		opening.Location = request.Location
 	}
 
-	if request.Remote != nil {
-		opening.Remote = *request.Remote
+	if request.Priority != nil {
+		opening.Priority = *request.Priority
 	}
 
-	if request.Link != "" {
-		opening.Link = request.Link
+	if request.Number != "" {
+		opening.Number = request.Number
 	}
-
+	/*
 	if request.Salary > 0 {
 		opening.Salary = request.Salary
 	}
+	*/
 	// Save opening
 	if err := db.Save(&opening).Error; err != nil {
 		logger.Errorf("error updating opening: %v", err.Error())

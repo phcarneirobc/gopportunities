@@ -9,53 +9,55 @@ func errParamIsRequired(name,typ string) error{
 }
 
 type CreateOpeningRequest struct{
-	Role string `json:"role"`
-	Company string `json:"company"`
+	Name string `json:"name"`
+	CPF string `json:"cpf"`
 	Location string `json:"location"`
-	Remote *bool `json:"remote"`
-	Link string `json:"link"`
-	Salary int64 `json:"salary"`
+	Priority *bool `json:"priority"`
+	Number string `json:"Number"`
+	//Salary int64 `json:"salary"`
 
 }
 
 func(r *CreateOpeningRequest) Validate() error{
-	if r.Role == "" && r.Company == "" && r.Location == "" && r.Remote == nil && r.Salary <= 0{
+	if r.CPF == "" && r.Name == "" && r.Location == "" && r.Priority == nil /*&& r.Salary <= 0*/{
 		return fmt.Errorf("request body is empty or malformed")
 	}
-	if r.Role == ""{
-		return errParamIsRequired("role","string")
+	if r.CPF == ""{
+		return errParamIsRequired("cpf","string")
 	}
-	if r.Company == ""{
-		return errParamIsRequired("role","string")
+	if r.Name == ""{
+		return errParamIsRequired("name","string")
 	}
 	if r.Location == ""{
-		return errParamIsRequired("role","string")
+		return errParamIsRequired("location","string")
 	}
-	if r.Link == ""{
-		return errParamIsRequired("role","string")
+	if r.Number == ""{
+		return errParamIsRequired("number","string")
 	}
-	if r.Remote == nil{
-		return errParamIsRequired("remote","bool")
+	if r.Priority == nil{
+		return errParamIsRequired("priority","bool")
 	}
+	/*
 	if r.Salary <= 0{
 		return errParamIsRequired("salary","int64")
 	}
+	*/
 	return nil
 }
 
 type UpdateOpeningRequest struct{
-	Role string `json:"role"`
-	Company string `json:"company"`
+	Name string `json:"name"`
+	CPF string `json:"cpf"`
 	Location string `json:"location"`
-	Remote *bool `json:"remote"`
-	Link string `json:"link"`
-	Salary int64 `json:"salary"`
+	Priority *bool `json:"priority"`
+	Number string `json:"Number"`
+	//Salary int64 `json:"salary"`
 }
 
 func(r*UpdateOpeningRequest) Validate() error{
 	// If any is provided, validation is truthy
 
-	if r.Role != "" || r.Company != "" || r.Location != "" || r.Remote != nil || r.Link != "" || r.Salary >0{
+	if r.CPF != "" || r.Name != "" || r.Location != "" || r.Priority != nil || r.Number != "" /*|| r.Salary >0*/{
 		return nil
 	}
 	return fmt.Errorf("at least one valid field must be provided")
