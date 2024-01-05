@@ -1,14 +1,22 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
+)
 
-func Initialize(){
-	// Initialize router
+func Initialize() *gin.Engine {
+	// Inicialize o roteador
 	router := gin.Default()
-	
-	// Initialize Routes
+
+	// Configuração básica do CORS (permitindo todas as origens)
+	config := cors.DefaultConfig()
+	config.AllowOrigins = []string{"*"} // ou ajuste para a origem específica do seu frontend
+	router.Use(cors.New(config))
+
+	// Inicialize Rotas
 	initializeRoutes(router)
 
-	// Run the server
-	router.Run() // listen and serve on 0.0.0.0:8080
+	// Retorne o roteador
+	return router
 }
